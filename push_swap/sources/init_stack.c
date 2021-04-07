@@ -1,0 +1,100 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/16 11:28:17 by bemoreau          #+#    #+#             */
+/*   Updated: 2021/03/22 15:38:59 by bemoreau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "pushswap.h"
+
+
+int		parse_duplicate(int *stack)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (stack[i])
+	{
+		j = i;
+		while (stack[j + 1])
+		{
+			if (stack[j + 1] == stack[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+
+int		ft_isnum(int ch)
+{
+	if (ch <= 57 && ch >= 48)
+		return (1);
+	return (0);
+}
+
+int				check_atoi(const char *str, int *bool)
+{
+	int i;
+	int nb;
+	int neg;
+
+	i = 0;
+	nb = 0;
+	while ((str[i] <= 13 && str[i] >= 9) || str[i] == 32)
+		i++;
+	neg = (str[i] == '-') ? 1 : 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (ft_isnum(str[i]))
+		nb = nb * 10 + (str[i++] - 48);
+	if (str[i] != '\0' && !ft_isnum(str[i]))
+		*bool = 1;
+	return ((neg == 1) ? -nb : nb);
+}
+
+int		init_a(int *stack, char **operation, int nb)
+{
+	int		i;
+	int		bool;
+
+	i = 0;
+	bool = 0;
+	while (i < nb)
+	{
+		stack[i] = check_atoi(operation[i], &bool);
+		if (bool)
+		{
+			return (1);
+		}
+		i++;
+	}
+	parse_duplicate(stack);
+	return (0);
+}
+
+int		init_stack(t_stack *stack, int nb, char **operation)
+{
+	stack->a = (int *)malloc(sizeof(int) * (nb + 1));
+	if (!stack->a)
+		return (1);
+	stack->b = (int *)malloc(sizeof(int) * (nb + 1));
+	if (!stack->b)
+		return (1);
+	ft_bzero(stack->a, nb + 1);
+	ft_bzero(stack->b, nb);
+	stack->a_len = nb;
+	if (init_a(stack->a, operation, nb))
+		return (1);
+	stack->b_len = 0;
+	return (0);
+}
