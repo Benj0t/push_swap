@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:42:59 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/31 04:29:51 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:16:47 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef	struct	s_stack
 	char		**oper;
 }				t_stack;
 
+int			hold_first(int *stack, int start, int end);
 void		insert_down(t_stack *stack, int pos);
 void		insert_down(t_stack *stack, int pos);
 int			get_min_pos(int *stack, int len);

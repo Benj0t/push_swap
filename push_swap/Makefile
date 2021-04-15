@@ -6,7 +6,7 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 19:04:13 by bemoreau          #+#    #+#              #
-#    Updated: 2021/03/31 02:47:00 by bemoreau         ###   ########.fr        #
+#    Updated: 2021/04/07 16:16:57 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ FILES =		./sources/main\
 			./sources/operations_2\
 			./sources/sort_utils\
 			./sources/insert\
+			./sources/hundred\
 
 SRCS = $(addsuffix .c, $(FILES))
 OBJ = $(SRCS:.c=.o)
