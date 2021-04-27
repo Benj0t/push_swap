@@ -6,21 +6,22 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 19:04:13 by bemoreau          #+#    #+#              #
-#    Updated: 2021/04/07 16:16:57 by bemoreau         ###   ########.fr        #
+#    Updated: 2021/04/27 17:40:12 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 INCLUDE =	pushswap.h\
 			get_next_line.h\
+			libft.h\
 
 INC_PATH = ./includes/
 
 vpath %.c sources/
 
 FILES =		./sources/main\
-			./sources/get_next_line_utils\
-			./sources/get_next_line\
+			./gnl/get_next_line_utils\
+			./gnl/get_next_line\
 			./sources/realloc\
 			./sources/parser\
 			./sources/resolve\

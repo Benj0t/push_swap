@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:12:02 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/27 17:42:48 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:39:07 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_putchar(char c);
+void				ft_putstr(char *str);
+void				ft_putendl(char *str);
+void				ft_putnbr(int n);
 void				*ft_memccpy(void *destination,
 					const void *source, int c, size_t n);
 void				*ft_calloc(size_t count, size_t size);

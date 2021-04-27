@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:42:59 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/07 16:16:47 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:41:48 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include "./libft.h"
 
 typedef	struct	s_stack
 {
 	int			*a;
 	int			*b;
+	int			chunk[20];
 	int			a_len;
 	int			b_len;
 	char		**oper;
 }				t_stack;
 
+void		print_stack(int *stack, int len);
+void		insert_up(t_stack *stack, int pos);
+void		insert_down(t_stack *stack, int pos);
 int			hold_first(int *stack, int start, int end);
 void		insert_down(t_stack *stack, int pos);
 void		insert_down(t_stack *stack, int pos);
@@ -42,6 +46,7 @@ void		rr(t_stack *stack);
 void		rev_rotate(int *stack, int len);
 void		rrr(t_stack *stack);
 void		resolve(t_stack *stack);
+int			execution(t_stack *stack);
 int			parse_duplicate(int *stack);
 int			init_stack(t_stack *stack, int nb, char **operation);
 int			init_a(int *stack, char **operation, int nb);

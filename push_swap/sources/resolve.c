@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:19:34 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/31 04:42:34 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/27 23:29:12 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ void		exec_operation(char *operation, t_stack *stack)
 
 void	three_sort(t_stack *stack)
 {
-	if (stack->a_len == 2)
-		if (stack->a[0] < stack->a[1])
-			swap(stack->a);
+	if (stack->a_len == 2 && stack->a[0] < stack->a[1])
+		swap(stack->a);
 	if (stack->a_len == 3)
 	{
+		if (stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2])
+			return;
 		if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2] &&\
 			stack->a[2] > stack->a[0])
 			swap(stack->a);
@@ -63,7 +64,9 @@ void	three_sort(t_stack *stack)
 			rotate(stack->a, stack->a_len);
 		}
 		else
+		{
 			rev_rotate(stack->a, stack->a_len);
+		}
 	}
 }
 
@@ -72,23 +75,24 @@ void	five_sort(t_stack *stack)
 	int pos;
 
 	while (stack->a_len != 3)
+	{
 		push_b(stack);
+	}
 	three_sort(stack);
 	while (stack->b_len != 0)
 	{
 		pos = get_num_position(stack->a, first_sup(stack->a, stack->a_len, stack->b[0]));
-		if (pos < (stack->a_len / 2))
-			insert_up(stack, pos);
-		else
-		{
-			insert_down(stack, pos);
-		}
+		insert_down(stack, pos);
 	}
 }
 
 void	hundred_sort(t_stack *stack)
 {
-	//PAUUUUUUUUUUUUUSE
+	(void)stack;
+	//init_chunk(stack);
+	//if (stack->a_len < 20)
+	//	last_chunk();
+	
 }
 
 int		execution(t_stack *stack)
@@ -99,4 +103,5 @@ int		execution(t_stack *stack)
 		five_sort(stack);
 	else if (stack->a_len <= 100)
 		hundred_sort(stack);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:38:27 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 16:03:44 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/27 19:39:49 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ int		is_sort(t_stack *stack)
 	return (0);
 }
 
+void	print_stack(int *stack, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		ft_putnbr_fd(stack[i], 1);
+		write(1, " ", 1);
+		i++;
+	}
+	write(1, "\n", 1);
+}
+
 int 	main(int argc, char **argv)
 {
 	t_stack	stack;
@@ -52,7 +66,8 @@ int 	main(int argc, char **argv)
 	stack.b = NULL;
 	if (argc <= 2 || check_num(argv) || init_stack(&stack, argc - 1, argv + 1))
 		exit_main(&stack, 1);
-	if (execution(stack))
+	if (execution(&stack))
 		exit_main(&stack, 1);
+	print_stack(stack.a, stack.a_len);
 	return (0);
 }

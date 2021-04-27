@@ -6,12 +6,13 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 10:57:49 by bemoreau          #+#    #+#             */
-/*   Updated: 2019/12/18 18:41:44 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:12:54 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GET_NEXT_LINE_H
 # define FT_GET_NEXT_LINE_H
+# define BUFFER_SIZE 1
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
@@ -23,7 +24,7 @@ typedef struct		s_struct
 	int				pos;
 	char			*buffer;
 	char			*tmp;
-	char			*s[OPEN_MAX];
+	char			*s[4096];
 }					t_struct;
 
 int					ft_strlen(char *str);

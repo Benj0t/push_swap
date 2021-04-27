@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:37:55 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:39:00 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:43:01 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,15 @@ void		rr(t_stack *stack)
 
 void		rev_rotate(int *stack, int len)
 {
+	int tmp;
+
+	tmp = stack[len - 1];
 	while (len > 0)
 	{
 		ft_swap(&(stack[len]), &(stack[len - 1]));
 		len--;
 	}
+	stack[0] = tmp;
 }
 
 void		rrr(t_stack *stack)
