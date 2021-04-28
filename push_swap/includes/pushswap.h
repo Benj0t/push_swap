@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:42:59 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/27 18:41:48 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/28 01:12:02 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ int			get_min_pos(int *stack, int len);
 int			get_num_position(int *stack, int num);
 int			first_sup(int *stack, int len, int num);
 void		ft_swap(int *a, int *b);
-void		swap(int *stack);
+void		swap_a(int *stack);
+void		swap_b(int *stack);
 void		ss(t_stack *stack);
 void		push_a(t_stack *stack);
 void		push_b(t_stack *stack);
-void		rotate(int *stack, int len);
+void		rotate_a(int *stack, int len);
+void		rotate_b(int *stack, int len);
 void		rr(t_stack *stack);
-void		rev_rotate(int *stack, int len);
+void		rev_rotate_a(int *stack, int len);
+void		rev_rotate_b(int *stack, int len);
 void		rrr(t_stack *stack);
 void		resolve(t_stack *stack);
 int			execution(t_stack *stack);
@@ -57,4 +60,5 @@ int			check_args(char **tab);
 void		free_tab(char **tab);
 int			operation_check(char *operation);
 int			valid_operations(char **operation, int i);
+void		init_chunk(t_stack *stack);
 #endif

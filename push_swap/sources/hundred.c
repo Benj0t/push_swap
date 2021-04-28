@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 16:12:29 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/27 17:16:59 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/28 02:20:45 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		get_lowest(int *stack, int *ref, int slen, int rlen)
 	int tmp;
 
 	i = -1;
-	tmp = stack[0];
+	tmp = 2147483647;
 	if (!rlen)
 	{
 		while (++i < slen)
@@ -44,7 +44,7 @@ int		get_lowest(int *stack, int *ref, int slen, int rlen)
 	}
 	else
 	{
-		while (++i < slen)
+		while (++i < slen) 
 			if (stack[i] < tmp && check_ref(ref, rlen, stack[i]))
 			{
 				tmp = stack[i];

@@ -6,7 +6,7 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 19:04:13 by bemoreau          #+#    #+#              #
-#    Updated: 2021/04/27 17:40:12 by bemoreau         ###   ########.fr        #
+#    Updated: 2021/04/28 00:45:08 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ FILES =		./sources/main\
 			./sources/init_stack\
 			./sources/operations\
 			./sources/operations_2\
+			./sources/operations_3\
 			./sources/sort_utils\
 			./sources/insert\
 			./sources/hundred\

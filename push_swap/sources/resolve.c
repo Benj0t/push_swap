@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:19:34 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/27 23:29:12 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/04/28 02:21:04 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void		exec_operation(char *operation, t_stack *stack)
 {
 	if (!ft_strncmp(operation, "sa", 3))
-		swap(stack->a);
+		swap_a(stack->a);
 	else if (!ft_strncmp(operation, "sb", 3))
-		swap(stack->b);
+		swap_b(stack->b);
 	else if (!ft_strncmp(operation, "ss", 3))
 		ss(stack);
 	else if (!ft_strncmp(operation, "pa", 3))
@@ -25,15 +25,15 @@ void		exec_operation(char *operation, t_stack *stack)
 	else if (!ft_strncmp(operation, "pb", 3))
 		push_b(stack);
 	else if (!ft_strncmp(operation, "ra", 3))
-		rotate(stack->a, stack->a_len);
+		rotate_a(stack->a, stack->a_len);
 	else if (!ft_strncmp(operation, "rb", 3))
-		rotate(stack->b, stack->b_len);
+		rotate_b(stack->b, stack->b_len);
 	else if (!ft_strncmp(operation, "rr", 3))
 		rr(stack);
 	else if (!ft_strncmp(operation, "rra", 4))
-		rev_rotate(stack->a, stack->a_len);
+		rev_rotate_a(stack->a, stack->a_len);
 	else if (!ft_strncmp(operation, "rrb", 4))
-		rev_rotate(stack->b, stack->b_len);
+		rev_rotate_b(stack->b, stack->b_len);
 	else if (!ft_strncmp(operation, "rrr", 4))
 		rrr(stack);
 }
@@ -41,31 +41,31 @@ void		exec_operation(char *operation, t_stack *stack)
 void	three_sort(t_stack *stack)
 {
 	if (stack->a_len == 2 && stack->a[0] < stack->a[1])
-		swap(stack->a);
+		swap_a(stack->a);
 	if (stack->a_len == 3)
 	{
 		if (stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2])
 			return;
 		if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2] &&\
 			stack->a[2] > stack->a[0])
-			swap(stack->a);
+			swap_a(stack->a);
 		else if (stack->a[0] > stack->a[1] && stack->a[1] > stack->a[2])
 		{
-			swap(stack->a);
-			rev_rotate(stack->a, stack->a_len);
+			swap_a(stack->a);
+			rev_rotate_a(stack->a, stack->a_len);
 		}
 		else if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2] &&\
 			stack->a[2] < stack->a[0])
-			rotate(stack->a, stack->a_len);
+			rotate_a(stack->a, stack->a_len);
 		else if (stack->a[0] < stack->a[1] && stack->a[1] > stack->a[2] &&\
 			stack->a[2] > stack->a[0])
 		{
-			swap(stack->a);
-			rotate(stack->a, stack->a_len);
+			swap_a(stack->a);
+			rotate_a(stack->a, stack->a_len);
 		}
 		else
 		{
-			rev_rotate(stack->a, stack->a_len);
+			rev_rotate_a(stack->a, stack->a_len);
 		}
 	}
 }
@@ -88,8 +88,8 @@ void	five_sort(t_stack *stack)
 
 void	hundred_sort(t_stack *stack)
 {
-	(void)stack;
-	//init_chunk(stack);
+	init_chunk(stack);
+	print_stack(stack->chunk, 20);
 	//if (stack->a_len < 20)
 	//	last_chunk();
 	
