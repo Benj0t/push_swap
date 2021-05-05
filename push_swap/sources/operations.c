@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 19:10:46 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/28 00:47:38 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:48:10 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void	push_b(t_stack *stack)
 	while (++tmp < stack->a_len)
 		stack->a[tmp] = stack->a[tmp + 1];
 	stack->a_len--;
+
 }

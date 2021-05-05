@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:42:59 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/28 01:12:02 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:30:43 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,21 @@ typedef	struct	s_stack
 {
 	int			*a;
 	int			*b;
-	int			chunk[20];
+	int			*chunk;
+	int			c_len;
 	int			a_len;
 	int			b_len;
 	char		**oper;
 }				t_stack;
 
+void		exit_main(t_stack *stack, int bool);
+void		push_up(t_stack *stack, int pos);
+void		push_down(t_stack *stack, int pos);
 void		print_stack(int *stack, int len);
 void		insert_up(t_stack *stack, int pos);
 void		insert_down(t_stack *stack, int pos);
-int			hold_first(int *stack, int start, int end);
+int			hold_first(t_stack *stack);
+int			hold_second(t_stack *stack);
 void		insert_down(t_stack *stack, int pos);
 void		insert_down(t_stack *stack, int pos);
 int			get_min_pos(int *stack, int len);

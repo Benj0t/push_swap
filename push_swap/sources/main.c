@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:38:27 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/27 19:39:49 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 22:21:25 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	exit_main(t_stack *stack, int bool)
 {
+	if (stack->chunk)
+		free(stack->chunk);
 	if (stack->a)
 		free(stack->a);
 	if (stack->b)
@@ -68,6 +70,8 @@ int 	main(int argc, char **argv)
 		exit_main(&stack, 1);
 	if (execution(&stack))
 		exit_main(&stack, 1);
-	print_stack(stack.a, stack.a_len);
+	
+	//print_stack(stack.b, stack.b_len);
+	exit_main(&stack, 0);
 	return (0);
 }

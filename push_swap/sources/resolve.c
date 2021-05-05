@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:19:34 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/28 02:21:04 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 22:21:22 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,26 +82,42 @@ void	five_sort(t_stack *stack)
 	while (stack->b_len != 0)
 	{
 		pos = get_num_position(stack->a, first_sup(stack->a, stack->a_len, stack->b[0]));
-		insert_down(stack, pos);
+		insert_up(stack, pos);
+
 	}
 }
 
 void	hundred_sort(t_stack *stack)
 {
-	init_chunk(stack);
-	print_stack(stack->chunk, 20);
-	//if (stack->a_len < 20)
-	//	last_chunk();
-	
+	int hf;
+	int hs;
+	int nb;
+
+	while (stack->a_len != 0)
+	{
+		init_chunk(stack);
+		nb = 0;
+		while (nb++ < stack->c_len)
+		{
+			hf = hold_first(stack);
+			hs = stack->a_len - hold_second(stack);
+			if (hf <= hs)
+				push_down(stack, hf);
+			else if (hs < hf)
+				push_up(stack, hs);
+		}
+		free(stack->chunk);
+		stack->chunk = NULL;
+	}
 }
 
 int		execution(t_stack *stack)
 {
-	if (stack->a_len <= 3)
+  	if (stack->a_len <= 3)
 		three_sort(stack);
 	else if (stack->a_len <= 5)
 		five_sort(stack);
-	else if (stack->a_len <= 100)
+	else if (stack->a_len > 5)
 		hundred_sort(stack);
 	return (0);
 }

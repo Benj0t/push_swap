@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 11:28:17 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:38:59 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:36:06 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		init_a(int *stack, char **operation, int nb)
 
 int		init_stack(t_stack *stack, int nb, char **operation)
 {
+	stack->chunk = NULL;
 	stack->a = (int *)malloc(sizeof(int) * (nb + 1));
 	if (!stack->a)
 		return (1);
@@ -91,7 +92,7 @@ int		init_stack(t_stack *stack, int nb, char **operation)
 	if (!stack->b)
 		return (1);
 	ft_bzero(stack->a, nb + 1);
-	ft_bzero(stack->b, nb);
+	ft_bzero(stack->b, nb + 1);
 	stack->a_len = nb;
 	if (init_a(stack->a, operation, nb))
 		return (1);

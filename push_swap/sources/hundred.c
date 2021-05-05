@@ -6,13 +6,13 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 16:12:29 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/04/28 02:20:45 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:52:23 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int		check_ref(int *chunk, int len, int num)
+int			check_ref(int *chunk, int len, int num)
 {
 	int i;
 
@@ -26,7 +26,7 @@ int		check_ref(int *chunk, int len, int num)
 	return (1);
 }
 
-int		get_lowest(int *stack, int *ref, int slen, int rlen)
+int			get_lowest(int *stack, int *ref, int slen, int rlen)
 {
 	int i;
 	int tmp;
@@ -56,22 +56,62 @@ int		get_lowest(int *stack, int *ref, int slen, int rlen)
 
 void		init_chunk(t_stack *stack)
 {
-	int len;
+	int			len;
+	static int	rest;
+	static int	div;
 	
-	len = 0;
-	while (len < 20)
+	ft_putstr_fd("coucou\n", 1);
+	if (!rest)
 	{
+		rest = stack->a_len % 5;
+		if (stack->a_len >= 500)
+			rest = stack->a_len % 11;
+	}
+	if (!div)
+	{
+		div = stack->a_len / 5;
+		if (stack->a_len >= 500)
+			div = stack->a_len / 11;
+	}
+	len = -1;
+	stack->c_len = div;
+	if (div + rest == stack->a_len)
+		stack->c_len += rest;
+	stack->chunk = (int *)malloc(sizeof(int) * (stack->c_len + 1));
+	if (!stack->chunk)
+		exit_main(stack, 0);	
+	printf("clen: %d\n", stack->c_len);
+	while (++len < stack->c_len)
 		stack->chunk[len] = get_lowest(stack->a, stack->chunk,\
 										stack->a_len, len);
-		len++;
-	}
+
 	return;
 }
 
-int		 hold_first(int *stack, int start, int end)
+int			hold_first(t_stack *stack)
 {
-	(void)stack;
-	(void)start;
-	(void)end;
-	return (1);
+	int i;
+
+	i = 0;
+	while (i < stack->a_len)
+	{
+		if (!check_ref(stack->chunk, 20, stack->a[i]))
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int			hold_second(t_stack *stack)
+{
+	int i;
+
+	i = stack->a_len - 1;
+	while (i >= 0)
+	{
+		if (!check_ref(stack->chunk, 20, stack->a[i]))
+			return (i);
+		i--;
+	}
+	return (-1);
 }
