@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 00:22:32 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 16:37:26 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 22:51:57 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,24 @@ void	insert_switch(t_stack *stack, int pos)
 	int count;
 
 	
-	if ((stack->b_len / 2) > pos)
-	{
+	if ((stack->b_len / 2) < pos)
 		while (pos++ <= stack->b_len)
 			rev_rotate_b(stack->b, stack->b_len);
-		push_b(stack);
-		count = get_min_pos(stack->b, stack->b_len);
-		while (count-- >= 1)
-			rotate_b(stack->b, stack->b_len);
-	}
 	else
 	{
 		while (pos-- > 1)
 			rotate_b(stack->b, stack->b_len);
-		push_b(stack);
-		count = get_min_pos(stack->b, stack->b_len);
-		while (count++ < stack->b_len)
-			rev_rotate_b(stack->b, stack->b_len);
 	}
+	push_b(stack);
+	count = get_min_pos(stack->b, stack->b_len);
+	//if (count > (stack->b_len / 2))
+	//	while (count++ < stack->b_len)
+	//		rev_rotate_b(stack->b, stack->b_len);
+	// else
+	// {
+	// 	while (count-- >= 1)
+	// 		rotate_b(stack->b, stack->b_len);
+	// }
 }
 
 void	push_up(t_stack *stack, int pos)

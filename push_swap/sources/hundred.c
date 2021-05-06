@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 16:12:29 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 18:52:23 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 22:56:08 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void		init_chunk(t_stack *stack)
 	static int	rest;
 	static int	div;
 	
-	ft_putstr_fd("coucou\n", 1);
 	if (!rest)
 	{
 		rest = stack->a_len % 5;
@@ -80,11 +79,9 @@ void		init_chunk(t_stack *stack)
 	stack->chunk = (int *)malloc(sizeof(int) * (stack->c_len + 1));
 	if (!stack->chunk)
 		exit_main(stack, 0);	
-	printf("clen: %d\n", stack->c_len);
 	while (++len < stack->c_len)
 		stack->chunk[len] = get_lowest(stack->a, stack->chunk,\
 										stack->a_len, len);
-
 	return;
 }
 
@@ -109,7 +106,7 @@ int			hold_second(t_stack *stack)
 	i = stack->a_len - 1;
 	while (i >= 0)
 	{
-		if (!check_ref(stack->chunk, 20, stack->a[i]))
+		if (!check_ref(stack->chunk, stack->c_len, stack->a[i]))
 			return (i);
 		i--;
 	}

@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:42:59 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 18:30:43 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/05 23:46:57 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			hold_first(t_stack *stack);
 int			hold_second(t_stack *stack);
 void		insert_down(t_stack *stack, int pos);
 void		insert_down(t_stack *stack, int pos);
+int			get_max_pos(int *stack, int len);
 int			get_min_pos(int *stack, int len);
 int			get_num_position(int *stack, int num);
 int			first_sup(int *stack, int len, int num);
