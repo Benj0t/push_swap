@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:19:34 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 22:21:22 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/10 13:20:17 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,16 @@ void	hundred_sort(t_stack *stack)
 
 int		execution(t_stack *stack)
 {
-  	if (stack->a_len <= 3)
+	if (stack->a_len == 2)
+	{
+		if (stack->a[0] > stack->a[1])
+			swap_a(stack->a);
+	}
+ 	else if (stack->a_len == 3)
 		three_sort(stack);
-	else if (stack->a_len <= 5)
+	else if (stack->a_len <= 5 && stack->a_len > 3)
 		five_sort(stack);
-	else if (stack->a_len > 5)
+	else if (stack->a_len > 5 && stack->a_len > 3)
 		hundred_sort(stack);
 	return (0);
 }
