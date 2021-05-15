@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 16:24:12 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 23:48:58 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/15 08:16:45 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		get_max_pos(int *stack, int len)
 	int max;
 	int i;
 
-	i = 1;
+	i = 0;
 	if (len == 0)
 		return (0);
 	max = -2147483648;
@@ -34,7 +34,7 @@ int		get_max_pos(int *stack, int len)
 	return (i);
 }
 
-int	get_min_pos(int *stack, int len)
+int		get_min_pos(int *stack, int len)
 {
 	int less;
 	int i;
@@ -56,20 +56,20 @@ int	get_min_pos(int *stack, int len)
 	return (i);
 }
 
-int	get_num_position(int *stack, int num)
+int		get_num_position(int *stack, int num)
 {
 	int i;
 
-	i = 0;
-	while (stack[i])
+	i = -1;
+	while (stack[++i])
 	{
-		if (stack[i++] == num)
+		if (stack[i] == num)
 			return (i);
 	}
 	return (-1);
 }
 
-int	first_sup(int *stack, int len, int num)
+int		first_sup(int *stack, int len, int num)
 {
 	int i;
 	int ref;
@@ -85,4 +85,39 @@ int	first_sup(int *stack, int len, int num)
 	if (num > ref)
 		return (stack[get_min_pos(stack, len)]);
 	return (ref);
+}
+
+int		first_inf(int *stack, int len, int num)
+{
+	int i;
+	int ref;
+
+	i = 0;
+	ref = stack[get_min_pos(stack, len)];
+	while (i < len)
+	{
+		if (stack[i] < num && stack[i] > ref)
+			ref = stack[i];
+		i++;
+	}
+	if (num < ref)
+		return (stack[get_max_pos(stack, len)]);
+	return (ref);
+}
+
+void	end_sort(t_stack *stack)
+{
+	int ref;
+
+	ref = get_max_pos(stack->b, stack->b_len) + 1;
+	if (ref < (stack->b_len / 2))
+		while (ref-- > 1)
+			rotate_b(stack->b, stack->b_len);
+	else
+	{
+		while (ref++ <= stack->b_len)
+			rev_rotate_b(stack->b, stack->b_len);
+	}
+	while (stack->b_len)
+		push_a(stack);
 }

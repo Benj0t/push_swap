@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:42:59 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 23:46:57 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/15 08:14:32 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int			get_max_pos(int *stack, int len);
 int			get_min_pos(int *stack, int len);
 int			get_num_position(int *stack, int num);
 int			first_sup(int *stack, int len, int num);
+int			first_inf(int *stack, int len, int num);
 void		ft_swap(int *a, int *b);
 void		swap_a(int *stack);
 void		swap_b(int *stack);
@@ -67,4 +68,5 @@ void		free_tab(char **tab);
 int			operation_check(char *operation);
 int			valid_operations(char **operation, int i);
 void		init_chunk(t_stack *stack);
+void		end_sort(t_stack *stack);
 #endif

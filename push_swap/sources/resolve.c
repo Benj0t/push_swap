@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:19:34 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/10 13:20:17 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/15 08:17:32 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,15 @@ void	hundred_sort(t_stack *stack)
 		{
 			hf = hold_first(stack);
 			hs = stack->a_len - hold_second(stack);
-			if (hf <= hs)
+			if (hf < hs)
 				push_down(stack, hf);
-			else if (hs < hf)
+			else if (hs <= hf)
 				push_up(stack, hs);
 		}
 		free(stack->chunk);
 		stack->chunk = NULL;
 	}
+	end_sort(stack);
 }
 
 int		execution(t_stack *stack)
@@ -122,7 +123,7 @@ int		execution(t_stack *stack)
 		three_sort(stack);
 	else if (stack->a_len <= 5 && stack->a_len > 3)
 		five_sort(stack);
-	else if (stack->a_len > 5 && stack->a_len > 3)
+	else if (stack->a_len > 5)
 		hundred_sort(stack);
 	return (0);
 }

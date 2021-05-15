@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 16:12:29 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 22:56:08 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:49:18 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int			check_ref(int *chunk, int len, int num)
 	return (1);
 }
 
-int			get_lowest(int *stack, int *ref, int slen, int rlen)
+int			get_biggest(int *stack, int *ref, int slen, int rlen)
 {
 	int i;
 	int tmp;
 
 	i = -1;
-	tmp = 2147483647;
+	tmp = -2147483648;
 	if (!rlen)
 	{
 		while (++i < slen)
-			if (stack[i] < tmp)
+			if (stack[i] > tmp)
 			{
 				tmp = stack[i];
 				i = -1;
@@ -45,7 +45,7 @@ int			get_lowest(int *stack, int *ref, int slen, int rlen)
 	else
 	{
 		while (++i < slen) 
-			if (stack[i] < tmp && check_ref(ref, rlen, stack[i]))
+			if (stack[i] > tmp && check_ref(ref, rlen, stack[i]))
 			{
 				tmp = stack[i];
 				i = -1;
@@ -78,9 +78,9 @@ void		init_chunk(t_stack *stack)
 		stack->c_len += rest;
 	stack->chunk = (int *)malloc(sizeof(int) * (stack->c_len + 1));
 	if (!stack->chunk)
-		exit_main(stack, 0);	
+		exit_main(stack, 0);
 	while (++len < stack->c_len)
-		stack->chunk[len] = get_lowest(stack->a, stack->chunk,\
+		stack->chunk[len] = get_biggest(stack->a, stack->chunk,\
 										stack->a_len, len);
 	return;
 }
