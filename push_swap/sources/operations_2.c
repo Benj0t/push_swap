@@ -6,15 +6,15 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:37:55 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 18:48:12 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/04 15:07:32 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void		rotate_a(int *stack, int len)
+void	rotate_a(int *stack, int len)
 {
-	int i;
+	int	i;
 
 	ft_putstr_fd("ra\n", 1);
 	i = 0;
@@ -25,9 +25,9 @@ void		rotate_a(int *stack, int len)
 	}
 }
 
-void		rotate_b(int *stack, int len)
+void	rotate_b(int *stack, int len)
 {
-	int i;
+	int	i;
 
 	ft_putstr_fd("rb\n", 1);
 	i = 0;
@@ -38,15 +38,15 @@ void		rotate_b(int *stack, int len)
 	}
 }
 
-void		rr(t_stack *stack)
+void	rr(t_stack *stack)
 {
 	rotate_a(stack->a, stack->a_len);
 	rotate_b(stack->b, stack->b_len);
 }
 
-void		rev_rotate_a(int *stack, int len)
+void	rev_rotate_a(int *stack, int len)
 {
-	int tmp;
+	int	tmp;
 
 	ft_putstr_fd("rra\n", 1);
 	tmp = stack[len - 1];
@@ -58,7 +58,7 @@ void		rev_rotate_a(int *stack, int len)
 	stack[0] = tmp;
 }
 
-void		rrr(t_stack *stack)
+void	rrr(t_stack *stack)
 {
 	ft_putstr_fd("rrr\n", 1);
 	rev_rotate_a(stack->a, stack->a_len);

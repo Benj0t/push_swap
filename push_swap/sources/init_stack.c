@@ -6,17 +6,16 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 11:28:17 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 18:36:06 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/04 15:16:24 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-
-int		parse_duplicate(int *stack)
+int	parse_duplicate(int *stack)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -34,38 +33,39 @@ int		parse_duplicate(int *stack)
 	return (0);
 }
 
-
-int		ft_isnum(int ch)
+int	ft_isnum(int ch)
 {
 	if (ch <= 57 && ch >= 48)
 		return (1);
 	return (0);
 }
 
-int				check_atoi(const char *str, int *bool)
+int	check_atoi(const char *str, int *bool)
 {
-	int i;
-	int nb;
-	int neg;
+	int	i;
+	int	nb;
+	int	neg;
 
 	i = 0;
 	nb = 0;
 	while ((str[i] <= 13 && str[i] >= 9) || str[i] == 32)
 		i++;
-	neg = (str[i] == '-') ? 1 : 0;
+	neg = 1;
+	if (str[i] == '-')
+		neg = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (ft_isnum(str[i]))
 		nb = nb * 10 + (str[i++] - 48);
 	if (str[i] != '\0' && !ft_isnum(str[i]))
 		*bool = 1;
-	return ((neg == 1) ? -nb : nb);
+	return (nb * neg);
 }
 
-int		init_a(int *stack, char **operation, int nb)
+int	init_a(int *stack, char **operation, int nb)
 {
-	int		i;
-	int		bool;
+	int	i;
+	int	bool;
 
 	i = 0;
 	bool = 0;
@@ -82,7 +82,7 @@ int		init_a(int *stack, char **operation, int nb)
 	return (0);
 }
 
-int		init_stack(t_stack *stack, int nb, char **operation)
+int	init_stack(t_stack *stack, int nb, char **operation)
 {
 	stack->chunk = NULL;
 	stack->a = (int *)malloc(sizeof(int) * (nb + 1));

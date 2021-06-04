@@ -6,11 +6,28 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:38:27 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/15 08:19:10 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/04 15:06:52 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	end_sort(t_stack *stack)
+{
+	int	ref;
+
+	ref = get_max_pos(stack->b, stack->b_len) + 1;
+	if (ref < (stack->b_len / 2))
+		while (ref-- > 1)
+			rotate_b(stack->b, stack->b_len);
+	else
+	{
+		while (ref++ <= stack->b_len)
+			rev_rotate_b(stack->b, stack->b_len);
+	}
+	while (stack->b_len)
+		push_a(stack);
+}
 
 void	exit_main(t_stack *stack, int bool)
 {
@@ -30,7 +47,7 @@ void	exit_main(t_stack *stack, int bool)
 	exit(0);
 }
 
-int		is_sort(t_stack *stack)	
+int	is_sort(t_stack *stack)	
 {
 	int		i;
 	int		prev;
@@ -47,7 +64,7 @@ int		is_sort(t_stack *stack)
 
 void	print_stack(int *stack, int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -59,7 +76,7 @@ void	print_stack(int *stack, int len)
 	write(1, "\n", 1);
 }
 
-int 	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	stack;
 
@@ -71,7 +88,7 @@ int 	main(int argc, char **argv)
 		exit_main(&stack, 1);
 	if (execution(&stack))
 		exit_main(&stack, 1);
-	//print_stack(stack.a, stack.a_len);
+	print_stack(stack.a, stack.a_len);
 	exit_main(&stack, 0);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:19:34 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/15 08:17:32 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/04 15:16:23 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void		exec_operation(char *operation, t_stack *stack)
+void	exec_operation(char *operation, t_stack *stack)
 {
 	if (!ft_strncmp(operation, "sa", 3))
 		swap_a(stack->a);
@@ -44,9 +44,7 @@ void	three_sort(t_stack *stack)
 		swap_a(stack->a);
 	if (stack->a_len == 3)
 	{
-		if (stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2])
-			return;
-		if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2] &&\
+		if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2] && \
 			stack->a[2] > stack->a[0])
 			swap_a(stack->a);
 		else if (stack->a[0] > stack->a[1] && stack->a[1] > stack->a[2])
@@ -54,44 +52,43 @@ void	three_sort(t_stack *stack)
 			swap_a(stack->a);
 			rev_rotate_a(stack->a, stack->a_len);
 		}
-		else if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2] &&\
+		else if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2] && \
 			stack->a[2] < stack->a[0])
 			rotate_a(stack->a, stack->a_len);
-		else if (stack->a[0] < stack->a[1] && stack->a[1] > stack->a[2] &&\
+		else if (stack->a[0] < stack->a[1] && stack->a[1] > stack->a[2] && \
 			stack->a[2] > stack->a[0])
 		{
 			swap_a(stack->a);
 			rotate_a(stack->a, stack->a_len);
 		}
 		else
-		{
 			rev_rotate_a(stack->a, stack->a_len);
-		}
 	}
 }
 
 void	five_sort(t_stack *stack)
 {
-	int pos;
+	int	pos;
 
 	while (stack->a_len != 3)
 	{
 		push_b(stack);
 	}
-	three_sort(stack);
+	if (!(stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2]))
+		three_sort(stack);
 	while (stack->b_len != 0)
 	{
-		pos = get_num_position(stack->a, first_sup(stack->a, stack->a_len, stack->b[0]));
+		pos = get_num_position(stack->a, first_sup(stack->a, stack->a_len, \
+								stack->b[0]));
 		insert_up(stack, pos);
-
 	}
 }
 
 void	hundred_sort(t_stack *stack)
 {
-	int hf;
-	int hs;
-	int nb;
+	int	hf;
+	int	hs;
+	int	nb;
 
 	while (stack->a_len != 0)
 	{
@@ -112,15 +109,18 @@ void	hundred_sort(t_stack *stack)
 	end_sort(stack);
 }
 
-int		execution(t_stack *stack)
+int	execution(t_stack *stack)
 {
 	if (stack->a_len == 2)
 	{
 		if (stack->a[0] > stack->a[1])
 			swap_a(stack->a);
 	}
- 	else if (stack->a_len == 3)
-		three_sort(stack);
+	else if (stack->a_len == 3)
+	{
+		if (!(stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2]))
+			three_sort(stack);
+	}
 	else if (stack->a_len <= 5 && stack->a_len > 3)
 		five_sort(stack);
 	else if (stack->a_len > 5)

@@ -6,7 +6,7 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 19:04:13 by bemoreau          #+#    #+#              #
-#    Updated: 2021/04/28 00:45:08 by bemoreau         ###   ########.fr        #
+#    Updated: 2021/06/04 13:55:37 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ vpath %.c sources/
 FILES =		./sources/main\
 			./gnl/get_next_line_utils\
 			./gnl/get_next_line\
+			./gnl/gnl_utils_2\
 			./sources/realloc\
 			./sources/parser\
 			./sources/resolve\
@@ -32,6 +33,7 @@ FILES =		./sources/main\
 			./sources/sort_utils\
 			./sources/insert\
 			./sources/hundred\
+			./sources/hundred_utils\
 
 SRCS = $(addsuffix .c, $(FILES))
 OBJ = $(SRCS:.c=.o)

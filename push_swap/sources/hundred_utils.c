@@ -1,56 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   hundred_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/13 19:18:20 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/04 15:10:07 by bemoreau         ###   ########.fr       */
+/*   Created: 2021/06/04 13:55:05 by bemoreau          #+#    #+#             */
+/*   Updated: 2021/06/04 14:27:14 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	check_num(char **arg)
+void	find_it(int slen, int *stack, int *tmp, int rlen)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	while (arg[i])
+	i = 0;
+	if (!rlen)
 	{
-		j = 0;
-		while (arg[i][j])
+		while (i < slen)
 		{
-			if (!ft_isdigit(arg[i][j++]))
-				return (1);
+			if (stack[i] > *tmp)
+			{
+				*tmp = stack[i];
+				i = -1;
+			}
+			i++;
 		}
-		i++;
 	}
-	return (0);
 }
 
-int	check_args(char **tab)
+void	init_op(int *rest, int *div, t_stack *stack)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
+	if (!*rest)
 	{
-		if (ft_strncmp(tab[i], "pa", 3))
-			return (1);
+		*rest = stack->a_len % 5;
+		if (stack->a_len >= 500)
+			*rest = stack->a_len % 11;
 	}
-	return (0);
-}
-
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	tab = NULL;
+	if (!*div)
+	{
+		*div = stack->a_len / 5;
+		if (stack->a_len >= 500)
+			*div = stack->a_len / 11;
+	}
 }
