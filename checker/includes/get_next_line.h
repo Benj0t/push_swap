@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 10:57:49 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/11 18:43:10 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 09:52:12 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <limits.h>
 
-#define OPEN_MAX 4096
+//#define OPEN_MAX 4096
 #define BUFFER_SIZE 1
 
 typedef struct		s_struct
@@ -29,6 +29,9 @@ typedef struct		s_struct
 	char			*s[OPEN_MAX];
 }					t_struct;
 
+int					my_free(char **line, t_struct *v, int fd);
+int					my_charset(char *str);
+int					get_line(int fd, char **line, t_struct *v);
 int					my_strlen(char *str);
 int					get_next_line(int fd, char **line);
 char				*my_calloc(int count, int size);

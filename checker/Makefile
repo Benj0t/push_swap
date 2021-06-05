@@ -6,7 +6,7 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 19:04:13 by bemoreau          #+#    #+#              #
-#    Updated: 2021/03/16 14:39:49 by bemoreau         ###   ########.fr        #
+#    Updated: 2021/06/05 09:48:26 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ vpath %.c sources/
 FILES =		./sources/main\
 			./sources/get_next_line_utils\
 			./sources/get_next_line\
+			./sources/gnl_utils_2\
 			./sources/realloc\
 			./sources/parser\
 			./sources/resolve\

@@ -6,15 +6,15 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 16:12:29 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 22:56:08 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 11:40:15 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int			check_ref(int *chunk, int len, int num)
+int	check_ref(int *chunk, int len, int num)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -26,68 +26,53 @@ int			check_ref(int *chunk, int len, int num)
 	return (1);
 }
 
-int			get_lowest(int *stack, int *ref, int slen, int rlen)
+int	get_biggest(int *stack, int *ref, int slen, int rlen)
 {
-	int i;
-	int tmp;
+	int	i;
+	int	tmp;
 
-	i = -1;
-	tmp = 2147483647;
-	if (!rlen)
+	i = 0;
+	tmp = -2147483648;
+	find_it(slen, stack, &tmp, rlen);
+	if (rlen)
 	{
-		while (++i < slen)
-			if (stack[i] < tmp)
+		while (i < slen)
+		{
+			if (stack[i] > tmp && check_ref(ref, rlen, stack[i]))
 			{
 				tmp = stack[i];
 				i = -1;
 			}
-	}
-	else
-	{
-		while (++i < slen) 
-			if (stack[i] < tmp && check_ref(ref, rlen, stack[i]))
-			{
-				tmp = stack[i];
-				i = -1;
-			}
+			i++;
+		}
 	}
 	return (tmp);
 }
 
-void		init_chunk(t_stack *stack)
+void	init_chunk(t_stack *stack)
 {
 	int			len;
 	static int	rest;
 	static int	div;
-	
-	if (!rest)
-	{
-		rest = stack->a_len % 5;
-		if (stack->a_len >= 500)
-			rest = stack->a_len % 11;
-	}
-	if (!div)
-	{
-		div = stack->a_len / 5;
-		if (stack->a_len >= 500)
-			div = stack->a_len / 11;
-	}
+	static int	bool = 0;
+
 	len = -1;
+	init_op(&rest, &div, &bool, stack);
 	stack->c_len = div;
 	if (div + rest == stack->a_len)
 		stack->c_len += rest;
 	stack->chunk = (int *)malloc(sizeof(int) * (stack->c_len + 1));
 	if (!stack->chunk)
-		exit_main(stack, 0);	
+		exit_main(stack, 0);
 	while (++len < stack->c_len)
-		stack->chunk[len] = get_lowest(stack->a, stack->chunk,\
+		stack->chunk[len] = get_biggest(stack->a, stack->chunk, \
 										stack->a_len, len);
-	return;
+	return ;
 }
 
-int			hold_first(t_stack *stack)
+int	hold_first(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < stack->a_len)
@@ -99,9 +84,9 @@ int			hold_first(t_stack *stack)
 	return (-1);
 }
 
-int			hold_second(t_stack *stack)
+int	hold_second(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = stack->a_len - 1;
 	while (i >= 0)

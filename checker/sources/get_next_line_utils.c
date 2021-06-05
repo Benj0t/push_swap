@@ -6,15 +6,15 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 06:44:06 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:36:34 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 09:45:31 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		my_strlen(char *str)
+int	my_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	if (!str)
 		return (0);
@@ -29,11 +29,15 @@ char	*my_strdup(char *src, int len)
 	char	*str;
 	int		i;
 
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(str))
 		return (NULL);
-	i = -1;
-	while (++i < len && src[i])
+	i = 0;
+	while (i < len && src[i])
+	{
 		str[i] = src[i];
+		i++;
+	}
 	str[i] = '\0';
 	free(src);
 	src = NULL;
@@ -45,27 +49,27 @@ char	*my_calloc(int count, int size)
 	char	*ret;
 	char	*c;
 	int		i;
-	int		len;
 
 	if (size <= 0 || count <= 0)
 	{
-		if (!(c = (char *)malloc(1)))
+		c = (char *)malloc(1);
+		if (!(c))
 			return (NULL);
 		c[0] = '\0';
 		return (c);
 	}
-	len = size * count;
 	i = 0;
-	if (!(ret = (char *)malloc(len + 1)))
+	ret = (char *)malloc((size * count) + 1);
+	if (!(ret))
 	{
-		if (!(c = (char *)malloc(1)))
+		c = (char *)malloc(1);
+		if (!(c))
 			return (NULL);
 		c[0] = 0;
 		return ((void *)c);
 	}
-	while (i < len)
+	while (i <= (size * count))
 		ret[i++] = '\0';
-	ret[i] = '\0';
 	return (ret);
 }
 
@@ -77,7 +81,8 @@ char	*my_substr(char *s, unsigned int start, size_t len, int bool)
 
 	i = 0;
 	leng = my_strlen(s);
-	if (!s || (!(str = (char *)malloc(sizeof(char) * (len + 1)))))
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s || (!(str)))
 		return (NULL);
 	if (!((unsigned int)leng < start))
 		while (len-- > 0 && i < (size_t)leng)
@@ -97,8 +102,8 @@ char	*my_strjoin(char *s1, char *s2, int len)
 	int		i;
 	int		j;
 
-	if ((!s1 || !s2) ||
-		(!(pt = malloc(sizeof(char) * (len + 1)))))
+	pt = malloc(sizeof(char) * (len + 1));
+	if ((!s1 || !s2) || (!(pt)))
 		return (NULL);
 	i = 0;
 	j = 0;

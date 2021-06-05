@@ -6,16 +6,16 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 19:18:20 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:36:34 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 10:08:57 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		check_num(char **arg)
+int	check_num(char **arg)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (arg[i])
@@ -31,9 +31,9 @@ int		check_num(char **arg)
 	return (0);
 }
 
-int		check_args(char **tab)
+int	check_args(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
@@ -46,7 +46,7 @@ int		check_args(char **tab)
 
 void	free_tab(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
@@ -55,7 +55,7 @@ void	free_tab(char **tab)
 	tab = NULL;
 }
 
-int		operation_check(char *operation)
+int	operation_check(char *operation)
 {
 	if (!ft_strncmp(operation, "sa", 3))
 		return (0);
@@ -80,10 +80,10 @@ int		operation_check(char *operation)
 	else if (!ft_strncmp(operation, "rrr", 4))
 		return (0);
 	else
-			return (1);
+		return (1);
 }
 
-int		valid_operations(char **operation, int i)
+int	valid_operations(char **operation, int i)
 {
 	if (!operation)
 		return (1);

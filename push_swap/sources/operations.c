@@ -6,24 +6,15 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 19:10:46 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/05/05 18:48:10 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/04 15:08:38 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_swap(int *a, int *b)
-{
-	int tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
 void	swap_a(int *stack)
 {
-	int tmp;
+	int	tmp;
 
 	ft_putstr_fd("sa  \n", 1);
 	tmp = stack[0];
@@ -33,7 +24,7 @@ void	swap_a(int *stack)
 
 void	swap_b(int *stack)
 {
-	int tmp;
+	int	tmp;
 
 	ft_putstr_fd("sb\n", 1);
 	tmp = stack[0];
@@ -50,7 +41,7 @@ void	ss(t_stack *stack)
 
 void	push_a(t_stack *stack)
 {
-	int tmp;
+	int	tmp;
 
 	ft_putstr_fd("pa\n", 1);
 	if (stack->b_len == 0)
@@ -68,7 +59,7 @@ void	push_a(t_stack *stack)
 
 void	push_b(t_stack *stack)
 {
-	int tmp;
+	int	tmp;
 
 	ft_putstr_fd("pb\n", 1);
 	if (stack->a_len == 0)
@@ -82,5 +73,4 @@ void	push_b(t_stack *stack)
 	while (++tmp < stack->a_len)
 		stack->a[tmp] = stack->a[tmp + 1];
 	stack->a_len--;
-
 }
