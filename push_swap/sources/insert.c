@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 00:22:32 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/05 11:40:07 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 12:05:18 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ void	push_up(t_stack *stack, int pos)
 {
 	int	position;
 
-	while (pos-- > 0)
+	while (pos-- >= 0)
 		rev_rotate_a(stack->a, stack->a_len);
-	position = get_num_position(stack->b, first_sup(stack->b, stack->b_len, \
+	position = get_num_position(stack->b, first_inf(stack->b, stack->b_len, \
 													stack->a[0]));
+	if (position == -1)
+		position = get_max_pos(stack->b, stack->b_len);
 	insert_switch(stack, position);
 }
 
@@ -56,9 +58,11 @@ void	push_down(t_stack *stack, int pos)
 {
 	int	position;
 
-	while (pos-- > 0)
+	while (pos-- >= 0)
 		rotate_a(stack->a, stack->a_len);
-	position = get_num_position(stack->b, first_sup(stack->b, stack->b_len, \
+	position = get_num_position(stack->b, first_inf(stack->b, stack->b_len, \
 								stack->a[0]));
+	if (position == -1)
+		position = get_max_pos(stack->b, stack->b_len);
 	insert_switch(stack, position);
 }
