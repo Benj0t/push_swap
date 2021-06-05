@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 19:16:41 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:36:34 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 10:09:14 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**realloc_null(char *new)
 {
-	char **tmp;
+	char	**tmp;
 
 	tmp = (char **)malloc(sizeof(char *) * (2));
 	if (!tmp)
@@ -26,7 +26,7 @@ static char	**realloc_null(char *new)
 	return (tmp);
 }
 
-char		**realloc_tab(char **tab, char *new)
+char	**realloc_tab(char **tab, char *new)
 {
 	int		i;
 	int		j;

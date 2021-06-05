@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:38:27 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:48:56 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 10:07:14 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	exit_main(char *line, t_stack *stack, int bool)
 	exit(0);
 }
 
-int		is_sort(t_stack *stack)	
+int	is_sort(t_stack *stack)	
 {
 	int		i;
 	int		prev;
@@ -61,7 +61,7 @@ void	print_result(int status, t_stack *stack, char *line)
 	}
 }
 
-int 	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	char	*line;
 	t_stack	stack;
@@ -74,7 +74,8 @@ int 	main(int argc, char **argv)
 		exit_main(line, &stack, 1);
 	while ((get_next_line(0, &line)) > 0)
 	{
-		if ((stack.oper = realloc_tab(stack.oper, line)) == NULL)
+		stack.oper = realloc_tab(stack.oper, line);
+		if ((stack.oper) == NULL)
 			return (1);
 		free(line);
 	}

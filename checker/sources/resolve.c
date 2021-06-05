@@ -6,15 +6,13 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:19:34 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:36:34 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 10:09:38 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-
-
-void		exec_operation(char *operation, t_stack *stack)
+void	exec_operation(char *operation, t_stack *stack)
 {
 	if (!ft_strncmp(operation, "sa", 3))
 		swap(stack->a);
@@ -40,9 +38,9 @@ void		exec_operation(char *operation, t_stack *stack)
 		rrr(stack);
 }
 
-void		resolve(t_stack *stack)
+void	resolve(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack->oper[i])

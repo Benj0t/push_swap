@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 19:10:46 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/03/22 15:36:34 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 10:08:06 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_swap(int *a, int *b)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = *a;
 	*a = *b;
@@ -23,7 +23,7 @@ void	ft_swap(int *a, int *b)
 
 void	swap(int *stack)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = stack[0];
 	stack[0] = stack[1];
