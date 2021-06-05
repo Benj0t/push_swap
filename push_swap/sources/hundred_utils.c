@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 13:55:05 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/04 14:27:14 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 10:50:55 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,14 @@ void	find_it(int slen, int *stack, int *tmp, int rlen)
 	}
 }
 
-void	init_op(int *rest, int *div, t_stack *stack)
+void	init_op(int *rest, int *div, int *bool, t_stack *stack)
 {
-	if (!*rest)
+	if (!*bool)
 	{
+		*bool = 1;
 		*rest = stack->a_len % 5;
 		if (stack->a_len >= 500)
 			*rest = stack->a_len % 11;
-	}
-	if (!*div)
-	{
 		*div = stack->a_len / 5;
 		if (stack->a_len >= 500)
 			*div = stack->a_len / 11;

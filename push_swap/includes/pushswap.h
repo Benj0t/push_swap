@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:42:59 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/04 15:09:16 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 10:50:24 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef	struct	s_stack
 }				t_stack;
 
 void		find_it(int slen, int *stack, int *tmp, int rlen);
-void		init_op(int *rest, int *div, t_stack *stack);
+void		init_op(int *rest, int *div, int *bool, t_stack *stack);
 void		exit_main(t_stack *stack, int bool);
 void		push_up(t_stack *stack, int pos);
 void		push_down(t_stack *stack, int pos);

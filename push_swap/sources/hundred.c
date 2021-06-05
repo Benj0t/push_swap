@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 16:12:29 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/04 14:27:49 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/06/05 11:40:15 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ void	init_chunk(t_stack *stack)
 	int			len;
 	static int	rest;
 	static int	div;
+	static int	bool = 0;
 
 	len = -1;
-	init_op(&rest, &div, stack);
+	init_op(&rest, &div, &bool, stack);
 	stack->c_len = div;
 	if (div + rest == stack->a_len)
 		stack->c_len += rest;
