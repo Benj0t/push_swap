@@ -45,8 +45,10 @@ void	push_up(t_stack *stack, int pos)
 {
 	int	position;
 
-	while (pos-- >= 0)
-		rev_rotate_a(stack->a, stack->a_len);
+	//printf("stack position: %d | first stack nb atm: %d\n", stack->a[pos], stack->a[0]);
+	while (pos-- > 0)
+		rotate_a(stack->a, stack->a_len);
+	// printf("first stack position now: %d", stack->a[0]); 
 	position = get_num_position(stack->b, first_inf(stack->b, stack->b_len, \
 													stack->a[0]));
 	if (position == -1)
@@ -59,7 +61,7 @@ void	push_down(t_stack *stack, int pos)
 	int	position;
 
 	while (pos-- >= 0)
-		rotate_a(stack->a, stack->a_len);
+		rev_rotate_a(stack->a, stack->a_len);
 	position = get_num_position(stack->b, first_inf(stack->b, stack->b_len, \
 								stack->a[0]));
 	if (position == -1)

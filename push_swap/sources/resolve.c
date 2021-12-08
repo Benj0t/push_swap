@@ -93,14 +93,19 @@ void	hundred_sort(t_stack *stack)
 	{
 		init_chunk(stack);
 		nb = 0;
-		while (nb++ < stack->c_len)
+		print_stack(stack->a, stack->a_len);
+		//print_stack(stack->b, stack->b_len);
+		print_stack(stack->chunk, stack->c_len);
+		while (nb++ < stack->c_len - 1)
 		{
 			hf = hold_first(stack);
 			hs = stack->a_len - hold_second(stack);
+			//printf("hf: %d | hs: %d\n", hf, hs);
+			//print_stack(stack->a, stack->a_len);
 			if (hf < hs)
-				push_down(stack, hf);
+				push_up(stack, hf);
 			else if (hs <= hf)
-				push_up(stack, hs);
+				push_down(stack, hs);
 		}
 		free(stack->chunk);
 		stack->chunk = NULL;
