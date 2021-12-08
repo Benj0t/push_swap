@@ -21,10 +21,10 @@ int	parse_duplicate(int *stack)
 	j = 0;
 	while (stack[i])
 	{
-		j = i;
-		while (stack[j + 1])
+		j = i + 1;
+		while (stack[j])
 		{
-			if (stack[j + 1] == stack[j])
+			if (stack[j - 1] == stack[j])
 				return (1);
 			j++;
 		}
@@ -78,7 +78,8 @@ int	init_a(int *stack, char **operation, int nb)
 		}
 		i++;
 	}
-	parse_duplicate(stack);
+	if (parse_duplicate(stack))
+		return (1);
 	return (0);
 }
 
