@@ -61,7 +61,7 @@ SRCS =		./ft_memset.c\
 			./ft_putnbr_fd.c\
 			./ft_memcmp.c\
 
-CC = gcc
+CC = clang
 
 AR = ar -rc
 

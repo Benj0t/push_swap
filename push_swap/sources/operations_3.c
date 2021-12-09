@@ -49,3 +49,49 @@ void	end_five_sort(t_stack *stack)
 			rev_rotate_a(stack->a, stack->a_len);
 	}
 }
+
+int	check_min_len(char *tab)
+{
+	int		j;
+	char	*str;
+
+	j = -1;
+	str = "-2147483648";
+	if (ft_strlen(tab) > ft_strlen(str) || tab[0] != str[++j])
+		return (1);
+	while (tab[++j])
+	{
+		if (tab[j] < str[j])
+			return (0);
+		if (tab[j] > str[j])
+			return (1);
+	}
+	return (0);
+}
+
+int	check_len(char **tab)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = 0;
+	j = -1;
+	str = "2147483647";
+	while (tab[++i])
+	{
+		if (tab[i][0] == '-' && !check_min_len(tab[i]))
+			return (0);
+		if (ft_strlen(tab[i]) > ft_strlen(str))
+			return (1);
+		while (tab[i][++j])
+		{
+			if (tab[i][j] < str[j])
+				return (0);
+			if (tab[i][j] > str[j])
+				return (1);
+		}
+		j = 0;
+	}
+	return (0);
+}

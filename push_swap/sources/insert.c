@@ -31,7 +31,7 @@ void	insert_switch(t_stack *stack, int pos)
 	if (pos == 0)
 	{
 		push_b(stack);
-		return;
+		return ;
 	}
 	if ((stack->b_len / 2) <= pos)
 	{

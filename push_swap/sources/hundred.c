@@ -83,6 +83,7 @@ int	hold_first(t_stack *stack)
 	}
 	return (-1);
 }
+
 int	hold_second(t_stack *stack)
 {
 	int	i;

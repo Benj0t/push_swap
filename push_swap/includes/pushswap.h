@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _PUSHWAP_H_
-# define _PUSHWAP_H_
+#ifndef PUSHSWAP_H
+# define PUSHSWAP_H
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include "./libft.h"
 
-typedef	struct	s_stack
+typedef struct s_stack
 {
 	int			*a;
 	int			*b;
@@ -28,6 +28,7 @@ typedef	struct	s_stack
 	char		**oper;
 }				t_stack;
 
+int			check_len(char **tab);
 void		end_five_sort(t_stack *stack);
 void		find_it(int slen, int *stack, int *tmp, int rlen);
 void		init_op(int *rest, int *div, int *bool, t_stack *stack);
@@ -72,4 +73,5 @@ int			operation_check(char *operation);
 int			valid_operations(char **operation, int i);
 void		init_chunk(t_stack *stack);
 void		end_sort(t_stack *stack);
+
 #endif

@@ -47,7 +47,7 @@ void	exit_main(t_stack *stack, int bool)
 	exit(0);
 }
 
-int	is_sort(t_stack *stack)	
+int	is_sort(t_stack *stack)
 {
 	int		i;
 	int		prev;
@@ -76,9 +76,6 @@ void	print_stack(int *stack, int len)
 	write(1, "\n", 1);
 }
 
-// Si nb > intmax
-// si 5 et grand nb a la fin
-
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
@@ -87,11 +84,12 @@ int	main(int argc, char **argv)
 	stack.a = NULL;
 	stack.b = NULL;
 	stack.chunk = NULL;
-	if (argc < 2 || check_num(argv) || init_stack(&stack, argc - 1, argv + 1))
+	if (argc < 2 || check_num(argv) || \
+		check_len(argv) || init_stack(&stack, argc - 1, argv + 1))
 		exit_main(&stack, 1);
 	if (execution(&stack))
 		exit_main(&stack, 1);
-	//print_stack(stack.a, stack.a_len);
+	print_stack(stack.a, stack.a_len);
 	exit_main(&stack, 0);
 	return (0);
 }
