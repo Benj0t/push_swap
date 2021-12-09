@@ -48,10 +48,10 @@ int	ft_charset(char *str)
 static int	ft_ret(t_struct *v, char **line, int fd, int bool)
 {
 	v->pos = ft_charset(v->s[fd]);
-	v->len = ft_strlen(v->s[fd]);
+	v->len = my_ft_strlen(v->s[fd]);
 	if (bool == 0)
 	{
-		*line = ft_strdup(v->s[fd], v->len);
+		*line = my_ft_strdup(v->s[fd], v->len);
 		v->s[fd] = NULL;
 		return (0);
 	}
@@ -64,7 +64,7 @@ static int	ft_ret(t_struct *v, char **line, int fd, int bool)
 		v->tmp = ft_substr(v->s[fd], v->pos + 1, v->len, 1);
 		if (!(v->tmp))
 			return (ft_free(line, v, fd));
-		v->s[fd] = ft_strdup(v->tmp, v->len);
+		v->s[fd] = my_ft_strdup(v->tmp, v->len);
 		if ((bool == 2 || bool == 1) && !(v->s[fd]))
 			return (ft_free(line, v, fd));
 		return (1);
@@ -81,7 +81,7 @@ static int	my_gnl(int fd, char **line, t_struct *v)
 	v->tmp = ft_strjoin(v->s[fd], v->buffer, v->len);
 	if (!(v->tmp))
 		return (ft_free(line, v, fd));
-	v->s[fd] = ft_strdup(v->tmp, v->len);
+	v->s[fd] = my_ft_strdup(v->tmp, v->len);
 	if (!(v->s[fd]))
 		return (ft_free(line, v, fd));
 	v->pos = ft_charset(v->s[fd]);
@@ -109,7 +109,7 @@ int	get_next_line(int fd, char **line)
 	v.buffer = ft_calloc(1, BUFFER_SIZE + 1);
 	if (!(v.buffer))
 		return (ft_free(line, &v, fd));
-	v.len = ft_strlen(v.s[fd]);
+	v.len = my_ft_strlen(v.s[fd]);
 	v.pos = ft_charset(v.s[fd]);
 	if ((v.pos) >= 0)
 	{
