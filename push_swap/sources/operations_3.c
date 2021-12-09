@@ -34,3 +34,20 @@ void	ft_swap(int *a, int *b)
 	*a = *b;
 	*b = tmp;
 }
+
+void	end_five_sort(t_stack *stack)
+{
+	int	ref;
+
+	ref = get_max_pos(stack->a, stack->a_len);
+	printf("ref: %d | alen %d| alen/2 %d\n", ref, stack->a_len, stack->a_len / 2);
+	print_stack(stack->a, stack->a_len);
+	if (ref <= (stack->a_len / 2))
+		while (ref-- >= 0)
+			rotate_a(stack->a, stack->a_len);
+	else
+	{
+		while (ref++ < stack->a_len)
+			rev_rotate_a(stack->a, stack->a_len);
+	}
+}

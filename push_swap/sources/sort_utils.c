@@ -39,7 +39,7 @@ int	get_min_pos(int *stack, int len)
 	int	less;
 	int	i;
 
-	i = 1;
+	i = 0;
 	if (len == 0)
 		return (0);
 	less = 2147483647;
@@ -53,20 +53,21 @@ int	get_min_pos(int *stack, int len)
 	while (++i < len)
 		if (stack[i] == less)
 			return (i);
-	return (i);
+	return (i - 1);
 }
 
-int	get_num_position(int *stack, int num)
+int	get_num_position(int *stack, int num, int len)
 {
 	int	i;
 
-	i = -1;
-	while (stack[++i])
+	i = 0;
+	while (i < len)
 	{
 		if (stack[i] == num)
 			return (i);
+		i++;
 	}
-	return (-1);
+	return (i);
 }
 
 int	first_sup(int *stack, int len, int num)
@@ -96,11 +97,11 @@ int	first_inf(int *stack, int len, int num)
 	ref = stack[get_min_pos(stack, len)];
 	while (i < len)
 	{
-		if (stack[i] < num && stack[i] > ref)
+		if (stack[i] < num && stack[i] >= ref)
 			ref = stack[i];
 		i++;
 	}
 	if (num < ref)
-		return (stack[get_max_pos(stack, len)]);
+		ref = stack[get_max_pos(stack, len)];
 	return (ref);
 }

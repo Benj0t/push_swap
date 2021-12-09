@@ -12,17 +12,17 @@
 
 #include "pushswap.h"
 
-int	parse_duplicate(int *stack)
+int	parse_duplicate(int *stack, int len)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (stack[i])
+	while (i < len)
 	{
 		j = i + 1;
-		while (stack[j])
+		while (j < len)
 		{
 			if (stack[j - 1] == stack[j])
 				return (1);
@@ -78,7 +78,7 @@ int	init_a(int *stack, char **operation, int nb)
 		}
 		i++;
 	}
-	if (parse_duplicate(stack))
+	if (parse_duplicate(stack, nb))
 		return (1);
 	return (0);
 }
@@ -95,7 +95,7 @@ int	init_stack(t_stack *stack, int nb, char **operation)
 	ft_bzero(stack->a, nb + 1);
 	ft_bzero(stack->b, nb + 1);
 	stack->a_len = nb;
-	if (init_a(stack->a, operation, nb))
+	if (init_a(stack->a, operation, stack->a_len))
 		return (1);
 	stack->b_len = 0;
 	return (0);

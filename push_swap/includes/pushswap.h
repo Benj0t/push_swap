@@ -28,6 +28,7 @@ typedef	struct	s_stack
 	char		**oper;
 }				t_stack;
 
+void		end_five_sort(t_stack *stack);
 void		find_it(int slen, int *stack, int *tmp, int rlen);
 void		init_op(int *rest, int *div, int *bool, t_stack *stack);
 void		exit_main(t_stack *stack, int bool);
@@ -42,7 +43,7 @@ void		insert_down(t_stack *stack, int pos);
 void		insert_down(t_stack *stack, int pos);
 int			get_max_pos(int *stack, int len);
 int			get_min_pos(int *stack, int len);
-int			get_num_position(int *stack, int num);
+int			get_num_position(int *stack, int num, int len);
 int			first_sup(int *stack, int len, int num);
 int			first_inf(int *stack, int len, int num);
 void		ft_swap(int *a, int *b);
@@ -59,7 +60,7 @@ void		rev_rotate_b(int *stack, int len);
 void		rrr(t_stack *stack);
 void		resolve(t_stack *stack);
 int			execution(t_stack *stack);
-int			parse_duplicate(int *stack);
+int			parse_duplicate(int *stack, int len);
 int			init_stack(t_stack *stack, int nb, char **operation);
 int			init_a(int *stack, char **operation, int nb);
 int			check_atoi(const char *str, int *bool);

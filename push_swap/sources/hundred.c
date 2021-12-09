@@ -64,20 +64,9 @@ void	init_chunk(t_stack *stack)
 	stack->chunk = (int *)malloc(sizeof(int) * (stack->c_len + 1));
 	if (!stack->chunk)
 		exit_main(stack, 0);
-	// printf("chunked\n");
 	while (++len < stack->c_len)
-	{
 		stack->chunk[len] = get_biggest(stack->a, stack->chunk, \
 										stack->a_len, len);
-		// printf("chunked: %d", get_biggest(stack->a, stack->chunk, stack->a_len, len));
-	}
-	//printf("chunked\n\n");
-	// int i = 0;
-	//while (i < stack->c_len)
-	// {
-	// 	printf("%d ", stack->chunk[i++]);
-	// }
-	// printf("\n\n");
 	return ;
 }
 
@@ -94,7 +83,6 @@ int	hold_first(t_stack *stack)
 	}
 	return (-1);
 }
-
 int	hold_second(t_stack *stack)
 {
 	int	i;

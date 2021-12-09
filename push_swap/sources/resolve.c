@@ -77,10 +77,10 @@ void	five_sort(t_stack *stack)
 	while (stack->b_len != 0)
 	{
 		pos = get_num_position(stack->a, first_sup(stack->a, stack->a_len, \
-								stack->b[0]));
+								stack->b[0]), stack->a_len);
 		insert_up(stack, pos + 1);
 	}
-	end_sort(stack);
+	end_five_sort(stack);
 }
 
 void	hundred_sort(t_stack *stack)
@@ -93,19 +93,18 @@ void	hundred_sort(t_stack *stack)
 	{
 		init_chunk(stack);
 		nb = 0;
-		print_stack(stack->a, stack->a_len);
-		//print_stack(stack->b, stack->b_len);
-		print_stack(stack->chunk, stack->c_len);
-		while (nb++ < stack->c_len - 1)
+		while (nb++ < stack->c_len)
 		{
 			hf = hold_first(stack);
-			hs = stack->a_len - hold_second(stack);
-			//printf("hf: %d | hs: %d\n", hf, hs);
-			//print_stack(stack->a, stack->a_len);
-			if (hf < hs)
+			hs = stack->a_len- 1 - hold_second(stack);
+			if (hf <= hs)
+			{
 				push_up(stack, hf);
-			else if (hs <= hf)
+			}
+			else if (hs < hf)
+			{
 				push_down(stack, hs);
+			}
 		}
 		free(stack->chunk);
 		stack->chunk = NULL;

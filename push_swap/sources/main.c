@@ -16,7 +16,7 @@ void	end_sort(t_stack *stack)
 {
 	int	ref;
 
-	ref = get_max_pos(stack->b, stack->b_len) + 1;
+	ref = get_max_pos(stack->b, stack->b_len);
 	if (ref < (stack->b_len / 2))
 		while (ref-- > 1)
 			rotate_b(stack->b, stack->b_len);
