@@ -96,7 +96,7 @@ void	hundred_sort(t_stack *stack)
 		while (nb++ < stack->c_len)
 		{
 			hf = hold_first(stack);
-			hs = stack->a_len- 1 - hold_second(stack);
+			hs = stack->a_len - 1 - hold_second(stack);
 			if (hf <= hs)
 			{
 				push_up(stack, hf);

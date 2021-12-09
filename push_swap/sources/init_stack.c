@@ -24,7 +24,7 @@ int	parse_duplicate(int *stack, int len)
 		j = i + 1;
 		while (j < len)
 		{
-			if (stack[j - 1] == stack[j])
+			if (stack[i] == stack[j])
 				return (1);
 			j++;
 		}
@@ -62,14 +62,14 @@ int	check_atoi(const char *str, int *bool)
 	return (nb * neg);
 }
 
-int	init_a(int *stack, char **operation, int nb)
+int	init_a(int *stack, char **operation, int len)
 {
 	int	i;
 	int	bool;
 
 	i = 0;
 	bool = 0;
-	while (i < nb)
+	while (i < len)
 	{
 		stack[i] = check_atoi(operation[i], &bool);
 		if (bool)
@@ -78,7 +78,7 @@ int	init_a(int *stack, char **operation, int nb)
 		}
 		i++;
 	}
-	if (parse_duplicate(stack, nb))
+	if (parse_duplicate(stack, len))
 		return (1);
 	return (0);
 }

@@ -18,7 +18,7 @@ void	end_sort(t_stack *stack)
 
 	ref = get_max_pos(stack->b, stack->b_len);
 	if (ref < (stack->b_len / 2))
-		while (ref-- > 1)
+		while (ref-- >= 1)
 			rotate_b(stack->b, stack->b_len);
 	else
 	{
@@ -76,6 +76,9 @@ void	print_stack(int *stack, int len)
 	write(1, "\n", 1);
 }
 
+// Si nb > intmax
+// si 5 et grand nb a la fin
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
@@ -88,7 +91,7 @@ int	main(int argc, char **argv)
 		exit_main(&stack, 1);
 	if (execution(&stack))
 		exit_main(&stack, 1);
-	print_stack(stack.a, stack.a_len);
+	//print_stack(stack.a, stack.a_len);
 	exit_main(&stack, 0);
 	return (0);
 }
