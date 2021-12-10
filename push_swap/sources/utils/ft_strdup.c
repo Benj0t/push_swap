@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 12:03:54 by bemoreau          #+#    #+#             */
-/*   Updated: 2019/11/11 18:05:19 by bemoreau         ###   ########.fr       */
+/*   Created: 2019/11/04 21:20:05 by bemoreau          #+#    #+#             */
+/*   Updated: 2019/11/13 12:27:01 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strdup(const char *src)
 {
-	unsigned char	*t_dst;
-	unsigned char	*t_src;
-	size_t			i;
+	char	*str;
+	int		i;
 
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	t_dst = (unsigned char *)dst;
-	t_src = (unsigned char *)src;
 	i = 0;
-	if (t_src < t_dst)
-		while (++i <= len)
-			t_dst[len - i] = t_src[len - i];
-	else
-		while (len-- > 0)
-			*(t_dst++) = *(t_src++);
-	return (dst);
+	while (src[i])
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (!str)
+		return (NULL);
+	i = -1;
+	while (src[++i])
+		str[i] = src[i];
+	str[i] = '\0';
+	return (str);
 }

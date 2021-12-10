@@ -70,7 +70,7 @@ int	get_line(int fd, char **line, t_struct *v)
 		v->tmp = ft_strjoin(v->s[fd], v->buffer, v->len);
 		if (!(v->tmp))
 			return (ft_free(line, v, fd));
-		v->s[fd] = ft_strdup(v->tmp, v->len);
+		v->s[fd] = my_ft_strdup(v->tmp, v->len);
 		if (!(v->s[fd]))
 			return (ft_free(line, v, fd));
 		v->ret = read(fd, v->buffer, BUFFER_SIZE);

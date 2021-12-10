@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 12:18:00 by bemoreau          #+#    #+#             */
-/*   Updated: 2019/11/13 12:18:01 by bemoreau         ###   ########.fr       */
+/*   Created: 2019/11/04 11:43:03 by bemoreau          #+#    #+#             */
+/*   Updated: 2019/11/12 15:27:43 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	ft_putendl(char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	int i;
+	char	*str;
 
-	if (!str)
-		return ;
-	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
-	ft_putchar('\n');
+	str = (char *)s;
+	while (n--)
+	{
+		*str = '\0';
+		str++;
+	}
 }

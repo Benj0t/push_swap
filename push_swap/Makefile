@@ -13,7 +13,6 @@
 NAME = push_swap
 INCLUDE =	pushswap.h\
 			get_next_line.h\
-			libft.h\
 
 INC_PATH = ./includes/
 
@@ -34,13 +33,20 @@ FILES =		./sources/main\
 			./sources/insert\
 			./sources/hundred\
 			./sources/hundred_utils\
+			./sources/utils/ft_putstr_fd\
+			./sources/utils/ft_putnbr_fd\
+			./sources/utils/ft_putchar_fd\
+			./sources/utils/ft_strdup\
+			./sources/utils/ft_strncmp\
+			./sources/utils/ft_isdigit\
+			./sources/utils/ft_bzero\
+			./sources/utils/ft_strlen\
 
 SRCS = $(addsuffix .c, $(FILES))
 OBJ = $(SRCS:.c=.o)
 
 CC = gcc
 L_CC = clang
-LIB = ./libft/libft.a
 FLAGS = -Wall -Wextra -Werror
 
 ### COLORS ###
@@ -57,31 +63,23 @@ VIOLET = \033[1;35m
 CYAN = \033[1;36m
 WHITE = \033[1;37m
 
-all: 		LIBFT $(NAME)
-
-LIBFT:
-			@echo "$(CYAN)Building libft:$(NOC) $@"
-			cd ./libft/ && make && cd ..
+all: 		$(NAME)
 
 $(NAME): 	$(OBJ)
 			@echo "$(CYAN)Constructing executable:$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -o $(NAME) $(OBJ) $(LIB)
+			@$(L_CC) -g3 $(FLAGS) -o $(NAME) $(OBJ)
 
 .c.o:		${SRCS}
 			@echo " $(VIOLET)[$(L_CC)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
 			@$(L_CC) -g3 $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.c=.o}
 clean:
-	@echo "$(CYAN)Clean libft:$(NOC) $@"
-	@cd libft && make clean && cd ..
 	@echo "\n$(RED)Removing '.o' objects: $(NOC) $@"
 	@rm -f $(OBJ)
 
 fclean: clean
-	@echo "$(CYAN)Fclean libft:$(NOC) $@"
-	@cd libft && make fclean && cd ..
 	@echo "\n$(RED)Removing executable: $(NOC) $@"
 	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean re fclean MLX LIBFT
+.PHONY: all clean re fclean MLX

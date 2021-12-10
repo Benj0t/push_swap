@@ -15,7 +15,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "./libft.h"
 
 typedef struct s_stack
 {
@@ -28,6 +27,15 @@ typedef struct s_stack
 	char		**oper;
 }				t_stack;
 
+size_t		ft_strlen(const char *str);
+void		ft_bzero(void *s, size_t n);
+int			ft_isdigit(int ch);
+int			ft_strncmp(const char *str1, const char *str2, size_t n);
+void		ft_putchar_fd(char c, int fd);
+char		*ft_strdup(const char *src);
+void		ft_putstr_fd(char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
+int			is_sort(t_stack *stack);
 int			check_len(char **tab);
 void		end_five_sort(t_stack *stack);
 void		find_it(int slen, int *stack, int *tmp, int rlen);

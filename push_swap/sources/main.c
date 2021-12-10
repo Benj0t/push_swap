@@ -22,7 +22,7 @@ void	end_sort(t_stack *stack)
 			rotate_b(stack->b, stack->b_len);
 	else
 	{
-		while (ref++ <= stack->b_len)
+		while (ref++ < stack->b_len)
 			rev_rotate_b(stack->b, stack->b_len);
 	}
 	while (stack->b_len)
@@ -57,8 +57,11 @@ int	is_sort(t_stack *stack)
 		return (1);
 	prev = stack->a[0];
 	while (i < stack->a_len)
-		if (prev > stack->a[i++])
+	{
+		if (prev > stack->a[i])
 			return (1);
+		prev = stack->a[i++];
+	}
 	return (0);
 }
 

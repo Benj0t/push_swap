@@ -114,6 +114,8 @@ void	hundred_sort(t_stack *stack)
 
 int	execution(t_stack *stack)
 {
+	if (!is_sort(stack))
+		return (0);
 	if (stack->a_len == 2)
 	{
 		if (stack->a[0] > stack->a[1])
