@@ -27,6 +27,7 @@ typedef struct s_stack
 	char		**oper;
 }				t_stack;
 
+int			check_len(char **argv);
 size_t		ft_strlen(const char *str);
 void		ft_bzero(void *s, size_t n);
 int			ft_isdigit(int ch);

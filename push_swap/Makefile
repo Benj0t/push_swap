@@ -33,6 +33,7 @@ FILES =		./sources/main\
 			./sources/insert\
 			./sources/hundred\
 			./sources/hundred_utils\
+			./sources/check_len\
 			./sources/utils/ft_putstr_fd\
 			./sources/utils/ft_putnbr_fd\
 			./sources/utils/ft_putchar_fd\

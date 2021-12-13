@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
 void	rev_rotate_b(int *stack, int len)
 {
 	int	tmp;

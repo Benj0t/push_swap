@@ -10,42 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_intlen(int nb)
-{
-	int i;
+#include "pushswap.h"
 
-	i = 1;
-	if (nb < 0)
-		i = 2;
-	while (nb / 10 != 0)
-	{
-		i++;
-		nb = nb / 10;
-	}
-	return (i);
+int	get_sign(char *tab)
+{
+	if (tab[0] == '-')
+		return (1);
+	if (tab[0] == '+')
+		return (2);
+	return (0);
 }
 
-int	verify_args(char *arg)
+int	parse_num(char *tab, int sign)
 {
-	if (ft_atoui(arg) > 2147483647)
-		return (1);
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = "2147483647"; 
+	if (sign == 1)
+		str = "-2147483648";
+	if (sign == 2)
+		str = "+2147483647";
+	while (tab[i])
+	{
+		//if (str[i] == '\0')
+		//	return (1);
+		if (tab[i] < str[i])
+			return (0);
+		if (tab[i] > str[i])
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
 int	check_len(char **argv)
 {
 	int	i;
+	int sign;
 
 	i = 1;
 	while (argv[i])
 	{
-		if (ft_strlen(argv[i] > 11))
+		sign = get_sign(argv[i]);
+		if (ft_strlen(argv[i]) > 11 || \
+			(ft_strlen(argv[i]) == 11 && sign == 0))
 			return (1);
-		if (ft_strlen(argv[i]) == 11 && \
-			(argv[i][0] != '+' && argv[i][0] != '-'))
+		if (ft_strlen(argv[i]) >= 10 && parse_num(argv[i], sign))
 			return (1);
-		if (verify_args(argv[i++]))
-			return (1);
+		i++;
 	}
 	return (0);
 }
