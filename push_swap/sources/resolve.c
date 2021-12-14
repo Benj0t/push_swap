@@ -78,7 +78,7 @@ void	five_sort(t_stack *stack)
 	{
 		pos = get_num_position(stack->a, first_sup(stack->a, stack->a_len, \
 								stack->b[0]), stack->a_len);
-		if (pos < (stack->a_len / 2))
+		if (pos >= (stack->a_len / 2))
 			insert_up(stack, pos + 1);
 		else
 			insert_down(stack, pos + 1);
