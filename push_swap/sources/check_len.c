@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:00:00 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/12/11 19:38:44 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:02:11 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ int	parse_num(char *tab, int sign)
 	char	*str;
 
 	i = 0;
-	str = "2147483647"; 
+	str = "2147483647";
 	if (sign == 1)
 		str = "-2147483648";
 	if (sign == 2)
 		str = "+2147483647";
 	while (tab[i])
 	{
-		//if (str[i] == '\0')
-		//	return (1);
 		if (tab[i] < str[i])
 			return (0);
 		if (tab[i] > str[i])
@@ -48,7 +46,7 @@ int	parse_num(char *tab, int sign)
 int	check_len(char **argv)
 {
 	int	i;
-	int sign;
+	int	sign;
 
 	i = 1;
 	while (argv[i])

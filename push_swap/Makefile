@@ -6,22 +6,18 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 19:04:13 by bemoreau          #+#    #+#              #
-#    Updated: 2021/06/04 13:55:37 by bemoreau         ###   ########.fr        #
+#    Updated: 2021/12/14 16:18:37 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 INCLUDE =	pushswap.h\
-			get_next_line.h\
 
 INC_PATH = ./includes/
 
 vpath %.c sources/
 
 FILES =		./sources/main\
-			./gnl/get_next_line_utils\
-			./gnl/get_next_line\
-			./gnl/gnl_utils_2\
 			./sources/realloc\
 			./sources/parser\
 			./sources/resolve\
@@ -83,4 +79,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean re fclean MLX
+.PHONY: all clean re fclean

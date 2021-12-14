@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 19:10:46 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/04 15:08:38 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:18:50 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap_a(int *stack)
 {
 	int	tmp;
 
-	ft_putstr_fd("sa  \n", 1);
+	ft_putstr_fd("sa\n", 1);
 	tmp = stack[0];
 	stack[0] = stack[1];
 	stack[1] = tmp;

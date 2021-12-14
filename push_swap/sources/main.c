@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:38:27 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/12/14 14:46:23 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:17:40 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	main(int argc, char **argv)
 	stack.a = NULL;
 	stack.b = NULL;
 	stack.chunk = NULL;
+	if (argc == 1)
+		return (0);
 	if (argc < 2 || check_num(argv) || \
 		check_len(argv) || init_stack(&stack, argc - 1, argv + 1))
 		exit_main(&stack, 1);

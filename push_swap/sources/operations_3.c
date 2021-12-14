@@ -6,11 +6,12 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 00:43:52 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/04 15:09:05 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:32:05 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
 void	rev_rotate_b(int *stack, int len)
 {
 	int	tmp;
