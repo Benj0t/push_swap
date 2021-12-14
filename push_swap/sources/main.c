@@ -6,7 +6,7 @@
 /*   By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:38:27 by bemoreau          #+#    #+#             */
-/*   Updated: 2021/06/05 11:40:35 by bemoreau         ###   ########.fr       */
+/*   Updated: 2021/12/14 14:46:23 by bemoreau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ int	main(int argc, char **argv)
 		exit_main(&stack, 1);
 	if (execution(&stack))
 		exit_main(&stack, 1);
-	print_stack(stack.a, stack.a_len);
 	exit_main(&stack, 0);
 	return (0);
 }
